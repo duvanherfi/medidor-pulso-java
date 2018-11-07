@@ -81,6 +81,8 @@ public class Reporte extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         pulsomax = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -222,6 +224,20 @@ public class Reporte extends javax.swing.JFrame {
         });
         jPanel2.add(pulsomax, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 230, 30));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-document-96.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 100));
+
+        jLabel7.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Recomendaciones");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 140, 20));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
 
         pack();
@@ -262,6 +278,11 @@ public class Reporte extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pulsomaxActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,6 +321,7 @@ public class Reporte extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField edad;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -308,6 +330,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
