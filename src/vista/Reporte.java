@@ -57,6 +57,8 @@ public class Reporte extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,6 +85,17 @@ public class Reporte extends javax.swing.JFrame {
         pulsomax = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog1.setTitle("RECOMENDACIONES");
+        jDialog1.setLocationRelativeTo(this);
+        jDialog1.setSize(new java.awt.Dimension(0, 0));
+        jDialog1.setType(java.awt.Window.Type.POPUP);
+        jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDialog1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -322,6 +335,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField edad;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
@@ -332,6 +346,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
