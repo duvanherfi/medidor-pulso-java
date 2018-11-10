@@ -25,26 +25,35 @@ public abstract class Control_Usuario {
 
         PreparedStatement pstm = null;
         String sql = null;
+        String sql2 = null;
+        int id = 0;
         String textoSinEncriptar = usuario.getContraseña();
         String passwordMD5 = DigestUtils.md5Hex(textoSinEncriptar);
 
         try {
             //realizamos la conexion sql
-            //Usuario(nombres,apellidos,edad,peso,usuario,contraseña));
-            //INSERT INTO usuario VALUES (NULL, 'Duvan', 'Hernandez Figueroa', '21', '82', 'duvanherfi', 'duvan123');
+
             sql = "insert into persona values (NULL,?,?,?,?);";
-            sql+="\n insert into usarios values (NULL,?,?);";
+            sql2 = " insert into usuarios values (?,?,?);";
 
             pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, usuario.getNombres());
             pstm.setString(2, usuario.getApellidos());
             pstm.setInt(3, usuario.getEdad());
             pstm.setInt(4, usuario.getPeso());
-            pstm.setString(5,usuario.getUsuario());
-            pstm.setString(6,usuario.getContraseña());
-            
-            
             estado = pstm.executeUpdate();
+
+            ResultSet rs = pstm.getGeneratedKeys();
+            if (rs != null && rs.next()) {
+                id = rs.getInt(1);
+            }
+
+            pstm = cn.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
+            pstm.setInt(1,id);
+            pstm.setString(2, usuario.getUsuario());
+            pstm.setString(3, usuario.getContraseña());
+            estado = estado & pstm.executeUpdate();
+            
 
         } catch (MySQLIntegrityConstraintViolationException e) {
             e.printStackTrace();
@@ -110,6 +119,5 @@ public abstract class Control_Usuario {
         }
         return estadoLogin;
     }
-
 
 }
