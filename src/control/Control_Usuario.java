@@ -32,15 +32,18 @@ public abstract class Control_Usuario {
             //realizamos la conexion sql
             //Usuario(nombres,apellidos,edad,peso,usuario,contraseña));
             //INSERT INTO usuario VALUES (NULL, 'Duvan', 'Hernandez Figueroa', '21', '82', 'duvanherfi', 'duvan123');
-            sql = "insert into usuario values (NULL,?,?,?,?,?,?)";
+            sql = "insert into persona values (NULL,?,?,?,?);";
+            sql+="\n insert into usarios values (NULL,?,?);";
 
             pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, usuario.getNombres());
             pstm.setString(2, usuario.getApellidos());
             pstm.setInt(3, usuario.getEdad());
             pstm.setInt(4, usuario.getPeso());
-            pstm.setString(5, usuario.getUsuario());
-            pstm.setString(6, passwordMD5);
+            pstm.setString(5,usuario.getUsuario());
+            pstm.setString(6,usuario.getContraseña());
+            
+            
             estado = pstm.executeUpdate();
 
         } catch (MySQLIntegrityConstraintViolationException e) {
