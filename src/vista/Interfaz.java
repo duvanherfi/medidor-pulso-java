@@ -22,47 +22,41 @@ import modelo.Usuario;
 public class Interfaz extends javax.swing.JFrame {
 //    private static Clip pulsito = Sounds.getSound("../con_pulso.wav");
 //    private static Clip sinPulsito = Sounds.getSound("../sin_pulso.wav");
+
     private static Interfaz INSTANCE = null;
 
     public static boolean c;
     public static Usuario logueado;
-    
-    private  Desarrolladores d1;
+
+    private Desarrolladores d1;
     private Reporte r;
     private MostrarPulso Ventana;
     private Informacion i1;
     private Formulario f;
-    
-    
-    private HiloPuertos com = new HiloPuertos();
+
     private AnimationClass d = new AnimationClass();
-    
-    
-    
-    
 
     /**
      * Creates new form Login
      */
     public Interfaz() {
-        com.start();
+        
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null); //Para que apenas se ejecuta el programa aparezca en el centro
-        
+
     }
-    
-     private synchronized static void crearInstancia(){
-        if(INSTANCE == null){
+
+    private synchronized static void crearInstancia() {
+        if (INSTANCE == null) {
             INSTANCE = new Interfaz();
-            
+
         }
     }
-    
-    
-    public static Interfaz getInstancia(){
+
+    public static Interfaz getInstancia() {
         crearInstancia();
-       return INSTANCE;
+        return INSTANCE;
     }
 
     public void Openfacebook() {
@@ -74,7 +68,6 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -429,9 +422,8 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel10.setBorder(null);
         f = Formulario.getInstancia();
         f.setVisible(true);
-        dispose();
-        
-        
+        hide();
+
 
     }//GEN-LAST:event_jLabel10MouseClicked
 
@@ -462,11 +454,15 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        Ventana=MostrarPulso.getInstancia();
-        
-        Ventana.setVisible(true);
-        dispose();
+        if (logueado != null) {
+            Ventana = MostrarPulso.getInstancia();
 
+            Ventana.setVisible(true);
+            hide();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "DEBE LOGUEARSE PARA ACCEDER A ESTÁ OPCIÓN", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_jLabel8MouseClicked
 
@@ -477,7 +473,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        if(jtfUsuario.getText().length()!=0 && jtfUsuario.getText().length() !=0) {
+        if (jtfUsuario.getText().length() != 0 && jtfUsuario.getText().length() != 0) {
             c = Control_Usuario.loginUsuario(jtfUsuario.getText(), jtfcontraseña1.getText());
             if (!c) {
                 JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado");
@@ -500,11 +496,10 @@ public class Interfaz extends javax.swing.JFrame {
                 jpingreso.setBackground(fondo);
 
             }
-        }
-        else{
+        } else {
             JOptionPane.showConfirmDialog(null, "No debe dejar campos vacíos", "ADVERTENCIA", JOptionPane.PLAIN_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jtfUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfUsuarioMouseClicked
@@ -526,7 +521,7 @@ public class Interfaz extends javax.swing.JFrame {
         jtfUsuario.setText("Digite su usuario...");
         jtfcontraseña1.setText("Digite su contraseña");
         jlUser.setText("user");
-        logueado=null;
+        logueado = null;
         jtfUsuario.setVisible(true);
         jlusuario.setVisible(true);
         jliconusuario.setVisible(true);
@@ -561,7 +556,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jlCalculadoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCalculadoraMouseClicked
         // TODO add your handling code here:
-        i1= Informacion.getInstancia();
+        i1 = Informacion.getInstancia();
         i1.setVisible(true);
     }//GEN-LAST:event_jlCalculadoraMouseClicked
 

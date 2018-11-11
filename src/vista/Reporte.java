@@ -6,46 +6,61 @@
 package vista;
 
 import com.panamahitek.ArduinoException;
+import control.Control_Reportes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jssc.SerialPortException;
+import modelo.Registro_Pulso;
 
 /**
  *
  * @author duvan
  */
 public class Reporte extends javax.swing.JFrame {
+
     private static Reporte INSTANCE = null;
     private MostrarPulso m;
+
     /**
      * Creates new form Formulario
      */
-    
-    private synchronized static void crearInstancia(){
-        if(INSTANCE == null){
+    private synchronized static void crearInstancia() {
+        if (INSTANCE == null) {
             INSTANCE = new Reporte();
-            
+
         }
     }
-    
-    
-    public static Reporte getInstancia(){
+
+    public static Reporte getInstancia() {
         crearInstancia();
-       return INSTANCE;
+        return INSTANCE;
     }
-    
+
     public Reporte() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        
-                
+
         nombre.setText(Interfaz.logueado.getNombres());
         apellido.setText(Interfaz.logueado.getApellidos());
         edad.setText(String.valueOf(Interfaz.logueado.getEdad()));
         peso.setText(String.valueOf(Interfaz.logueado.getPeso()));
+
         pulso.setText(String.valueOf(MostrarPulso.pulsoreporte));
-        pulsomax.setText(String.valueOf(220-Interfaz.logueado.getEdad()));
+        pulsomax.setText(String.valueOf(220 - Interfaz.logueado.getEdad()));
+
+        Registro_Pulso r;
+
+        if (MostrarPulso.pulsoreporte > 60 && MostrarPulso.pulsoreporte < 90) {
+            r = new Registro_Pulso("1", Interfaz.logueado.getId(), MostrarPulso.pulsoreporte);
+        } else if (MostrarPulso.pulsoreporte < 60) {
+            r = new Registro_Pulso("2", Interfaz.logueado.getId(), MostrarPulso.pulsoreporte);
+        } else {
+            r = new Registro_Pulso("3", Interfaz.logueado.getId(), MostrarPulso.pulsoreporte);
+        }
+        
+        Control_Reportes.registrarReporte(r);
+
     }
 
     /**
@@ -59,6 +74,9 @@ public class Reporte extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mostrar = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,13 +106,30 @@ public class Reporte extends javax.swing.JFrame {
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setTitle("RECOMENDACIONES");
-        jDialog1.setLocationRelativeTo(this);
-        jDialog1.setSize(new java.awt.Dimension(0, 0));
+        jDialog1.setLocationRelativeTo(null);
+        jDialog1.setVisible(true);
+        jDialog1.dispose();
+        jDialog1.setResizable(false);
+        jDialog1.setSize(new java.awt.Dimension(400, 300));
         jDialog1.setType(java.awt.Window.Type.POPUP);
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mostrar.setColumns(20);
+        mostrar.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        mostrar.setRows(5);
+        jScrollPane1.setViewportView(mostrar);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, 250));
+
+        jLabel9.setFont(new java.awt.Font("Decker", 1, 36)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("RECOMENDACIONES");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 400, 40));
+
         jDialog1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -273,18 +308,18 @@ public class Reporte extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-        INSTANCE=null;
+        INSTANCE = null;
         try {
-            MostrarPulso.Arduino.arduinoRX(MostrarPulso.puerto,9600, MostrarPulso.evento);
+            MostrarPulso.Arduino.arduinoRX(MostrarPulso.puerto, 9600, MostrarPulso.evento);
         } catch (ArduinoException ex) {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SerialPortException ex) {
             Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-        m=MostrarPulso.getInstancia();
+        m = MostrarPulso.getInstancia();
         m.setEnabled(true);
         dispose();
-        
+
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void pulsomaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pulsomaxActionPerformed
@@ -293,7 +328,11 @@ public class Reporte extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        Registro_Pulso r;
+        r=Control_Reportes.getReporte(Interfaz.logueado.getId());
+        mostrar.setText(r.getRecomendacion());
+        jDialog1.setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -346,8 +385,10 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
@@ -356,6 +397,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea mostrar;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField peso;
     private javax.swing.JTextField pulso;

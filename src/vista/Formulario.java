@@ -282,7 +282,7 @@ public class Formulario extends javax.swing.JFrame {
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
      INSTANCE=null;
      i= Interfaz.getInstancia();
-     i.setVisible(true);
+     i.show();
      
      dispose();
         

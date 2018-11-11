@@ -10,6 +10,7 @@ public class Usuario {
     private int peso;
     private String usuario;
     private String contraseña;
+    private int id=1;
     //Constructor
 
     public Usuario(String nombres, String apellidos, int edad, int peso, String usuario, String contraseña) {
@@ -21,6 +22,14 @@ public class Usuario {
         this.contraseña = contraseña;
     }
     // Metodos
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombres() {
         return nombres;
