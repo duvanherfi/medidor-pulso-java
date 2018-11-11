@@ -27,13 +27,13 @@ public class MostrarPulso extends javax.swing.JFrame {
     public static String puerto;
     private Interfaz i;
     private Reporte r;
+    private HiloPuertos com = new HiloPuertos();
 
     
 
     /**
      * Creates new form Formulario
      */
-
     private synchronized static void crearInstancia() {
         if (INSTANCE == null) {
             INSTANCE = new MostrarPulso();
@@ -50,6 +50,7 @@ public class MostrarPulso extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        com.start ();
 
     }
 
@@ -173,7 +174,6 @@ public class MostrarPulso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     public static SerialPortEventListener evento = new SerialPortEventListener() {
         @Override
         public void serialEvent(SerialPortEvent spe) {
@@ -184,7 +184,7 @@ public class MostrarPulso extends javax.swing.JFrame {
                     pulso = Arduino.printMessage();
 
                     pulsoreporte = Integer.parseInt(pulso);
-                    
+
                     jLabel4.setText(String.valueOf(pulsoreporte));
 
                 }
@@ -195,9 +195,8 @@ public class MostrarPulso extends javax.swing.JFrame {
 
         }
     };
-    
-    
-    
+
+
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         this.setState(Interfaz.ICONIFIED);
     }//GEN-LAST:event_jLabel22MouseClicked
@@ -205,7 +204,7 @@ public class MostrarPulso extends javax.swing.JFrame {
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         INSTANCE = null;
         i = Interfaz.getInstancia();
-        i.setVisible(true);
+        i.show();
 
         dispose();
 
@@ -223,8 +222,7 @@ public class MostrarPulso extends javax.swing.JFrame {
             r = Reporte.getInstancia();
             r.setVisible(true);
             disable();
-        }
-        else{
+        } else {
             JOptionPane.showConfirmDialog(null, "Debe Loguearse para poder acceder a esta función", "ADVERTENCIA", JOptionPane.PLAIN_MESSAGE);
         }
 
