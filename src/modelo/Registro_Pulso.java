@@ -5,8 +5,8 @@ package modelo;
 public class Registro_Pulso {
     //Atributos
     private String rango;
-    int id_persona;
-    int pulso;
+    private int id_persona;
+    private int pulso;
     private String recomendacion;
     //Constructor
 
