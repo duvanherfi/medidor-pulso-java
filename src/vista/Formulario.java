@@ -69,7 +69,6 @@ public class Formulario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtfApellidos = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jtfPeso = new javax.swing.JTextField();
@@ -119,7 +118,7 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 220, 30));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 210, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 210, 10));
 
         jLabel3.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
@@ -163,8 +162,7 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jtfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 220, 30));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 10));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 210, 10));
 
         jLabel5.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -208,13 +206,13 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 220, 30));
-        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 230, 10));
+        jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 230, 10));
 
         jLabel7.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Contraseña: ");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
-        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 230, 10));
+        jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 230, 10));
 
         jSeparator8.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel2.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 10, 320));
@@ -260,7 +258,7 @@ public class Formulario extends javax.swing.JFrame {
                 jPasswordMouseClicked(evt);
             }
         });
-        jPanel2.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 490, 220, -1));
+        jPanel2.add(jPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 220, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
 
@@ -407,7 +405,6 @@ jtfUsuario.setText("");
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
