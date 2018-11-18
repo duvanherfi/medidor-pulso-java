@@ -7,6 +7,8 @@ package vista;
 
 import AppPackage.AnimationClass;
 import control.Control_Usuario;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +38,14 @@ public class Desarrolladores extends javax.swing.JFrame {
         crearInstancia();
        return INSTANCE;
     }
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+
+
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +71,7 @@ public class Desarrolladores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -155,7 +166,7 @@ public class Desarrolladores extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1050, 590));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

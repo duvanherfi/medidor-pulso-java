@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author andres
@@ -33,6 +36,15 @@ public class Informacion extends javax.swing.JFrame {
         crearInstancia();
        return INSTANCE;
     }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+
+
+        return retValue;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +69,7 @@ public class Informacion extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

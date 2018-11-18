@@ -7,6 +7,8 @@ package vista;
 
 import com.panamahitek.ArduinoException;
 import control.Control_Reportes;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jssc.SerialPortException;
@@ -34,6 +36,15 @@ public class Reporte extends javax.swing.JFrame {
     public static Reporte getInstancia() {
         crearInstancia();
         return INSTANCE;
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+
+
+        return retValue;
     }
 
     public Reporte() {
@@ -134,6 +145,7 @@ public class Reporte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

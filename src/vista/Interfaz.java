@@ -9,6 +9,8 @@ import AppPackage.AnimationClass;
 import control.Control_Usuario;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.net.URI;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
@@ -45,6 +47,15 @@ public class Interfaz extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null); //Para que apenas se ejecuta el programa aparezca en el centro
 
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+                getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
+
+
+        return retValue;
     }
 
     private synchronized static void crearInstancia() {
@@ -113,6 +124,7 @@ public class Interfaz extends javax.swing.JFrame {
         jlidea = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
