@@ -22,9 +22,6 @@ import modelo.Usuario;
  * @author equipo00
  */
 public class Interfaz extends javax.swing.JFrame {
-//    private static Clip pulsito = Sounds.getSound("../con_pulso.wav");
-//    private static Clip sinPulsito = Sounds.getSound("../sin_pulso.wav");
-
     private static Interfaz INSTANCE = null;
 
     public static boolean c;
@@ -36,24 +33,25 @@ public class Interfaz extends javax.swing.JFrame {
     private Informacion i1;
     private Formulario f;
 
-    private AnimationClass d = new AnimationClass();
+    private AnimationClass Ad1 = new AnimationClass();
+    private AnimationClass Ad2 = new AnimationClass();
 
     /**
      * Creates new form Login
      */
     public Interfaz() {
-        
+
         initComponents();
+        INSTANCE = this;
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null); //Para que apenas se ejecuta el programa aparezca en el centro
 
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
-
 
         return retValue;
     }
@@ -114,7 +112,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jlUser = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -338,7 +335,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("¿sabías qué?");
         JPmenu.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 120, -1));
-        JPmenu.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -434,7 +430,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel10.setBorder(null);
         f = Formulario.getInstancia();
         f.setVisible(true);
-        hide();
+        dispose();
 
 
     }//GEN-LAST:event_jLabel10MouseClicked
@@ -457,11 +453,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
-
-        new AnimationClass().jLabelYDown(350, 580, 10, 5, jLabel12);
         new AnimationClass().jLabelYUp(580, 350, 10, 5, jlidea);
-        new AnimationClass().jLabelYUp(460, 320, 10, 5, jLabel18);
-
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -470,9 +462,8 @@ public class Interfaz extends javax.swing.JFrame {
             Ventana = MostrarPulso.getInstancia();
 
             Ventana.setVisible(true);
-            hide();
-        }
-        else{
+            dispose();
+        } else {
             JOptionPane.showMessageDialog(null, "DEBE LOGUEARSE PARA ACCEDER A ESTÁ OPCIÓN", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -502,11 +493,12 @@ public class Interfaz extends javax.swing.JFrame {
                 js2.setVisible(false);
                 jButton1.setVisible(false);
                 jLabel25.setVisible(false);
-                new AnimationClass().jLabelYDown(90, 220, 10, 5, jLabel3);
-                new AnimationClass().jLabelYUp(580, 305, 15, 5, jlsalir);
+                Ad1.jLabelYDown(90, 220, 10, 5, jLabel3);
+                Ad2.jLabelYUp(580, 305, 15, 5, jlsalir);
+
                 Color fondo = new Color(0, 153, 153);
                 jpingreso.setBackground(fondo);
-
+                
             }
         } else {
             JOptionPane.showConfirmDialog(null, "No debe dejar campos vacíos", "ADVERTENCIA", JOptionPane.PLAIN_MESSAGE);
@@ -528,8 +520,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jlsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlsalirMouseClicked
         // TODO add your handling code here:
-        new AnimationClass().jLabelYUp(220, 90, 10, 5, jLabel3);
-        new AnimationClass().jLabelYDown(305, 580, 15, 5, jlsalir);
+        Ad1.jLabelYUp(220, 90, 10, 5, jLabel3);
+        Ad2.jLabelYDown(305, 580, 15, 5, jlsalir);
         jtfUsuario.setText("Digite su usuario...");
         jtfcontraseña1.setText("Digite su contraseña");
         jlUser.setText("user");
@@ -549,9 +541,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jlideaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlideaMouseClicked
 
-        new AnimationClass().jLabelYUp(580, 350, 10, 5, jLabel12);
         new AnimationClass().jLabelYDown(350, 580, 10, 5, jlidea);
-        new AnimationClass().jLabelYDown(320, 460, 10, 5, jLabel18);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jlideaMouseClicked
@@ -625,7 +615,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -644,7 +633,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jliconseguridad;
     private javax.swing.JLabel jliconusuario;
     private javax.swing.JLabel jlidea;
-    private javax.swing.JLabel jlsalir;
+    private static javax.swing.JLabel jlsalir;
     private javax.swing.JLabel jlusuario;
     private javax.swing.JPanel jpingreso;
     private javax.swing.JSeparator js1;
