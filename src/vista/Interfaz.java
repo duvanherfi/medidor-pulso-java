@@ -332,7 +332,10 @@ public class Interfaz extends javax.swing.JFrame {
         jlUser.setForeground(new java.awt.Color(153, 153, 153));
         jlUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlUser.setText("Salir");
+        jlUser.setVisible(false);
         JPmenu.add(jlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 60, 70, 20));
+
+        jSeparator3.setVisible(false);
         JPmenu.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 60, 30, 10));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Multiply_32px.png"))); // NOI18N
@@ -369,6 +372,7 @@ public class Interfaz extends javax.swing.JFrame {
         bSalir.setBackground(new java.awt.Color(255, 255, 255));
         bSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-sign-out-45s30.png"))); // NOI18N
         bSalir.setBorderPainted(false);
+        bSalir.setVisible(false);
         bSalir.setContentAreaFilled(false);
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
