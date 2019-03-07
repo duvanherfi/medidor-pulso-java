@@ -81,7 +81,6 @@ Usamos [Gitlab](https://gitlab.com) para el versionado. Para todas las versiones
 * **Andres Felipe Garcia** - *Documentación*
 * **Duvan Hernandez Figueroa** - *Desarrollador* - [duvanherfi](https://gitlab.com/duvanherfi)
 * **Johhan Andres Perez** - *Calidad*
-* 
 
 También puedes mirar la lista de todos los [contribuyentes](https://gitlab.com/dailysoft/pulso/graphs/master) quíenes han participado en este proyecto. 
 
