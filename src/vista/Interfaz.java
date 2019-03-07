@@ -34,7 +34,7 @@ public class Interfaz extends javax.swing.JFrame {
     private Formulario f;
 
     private AnimationClass Ad1 = new AnimationClass();
-    private AnimationClass Ad2 = new AnimationClass();
+    
 
     /**
      * Creates new form Login
@@ -102,14 +102,12 @@ public class Interfaz extends javax.swing.JFrame {
         jlCalculadora = new javax.swing.JLabel();
         jlInternet = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jlsalir = new javax.swing.JLabel();
         JPmenu = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -119,6 +117,10 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jlidea = new javax.swing.JLabel();
+        bSalir = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jlUser1 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -253,15 +255,6 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jpingreso.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
 
-        jlsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-sign-out-45.png"))); // NOI18N
-        jlsalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlsalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlsalirMouseClicked(evt);
-            }
-        });
-        jpingreso.add(jlsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, -1, -1));
-
         getContentPane().add(jpingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 580));
 
         JPmenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -316,13 +309,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel13.setText("bluetooh");
         JPmenu.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
 
-        jLabel14.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel14.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("comenzar");
-        JPmenu.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, -1));
-
         jLabel16.setBackground(new java.awt.Color(255, 99, 71));
         jLabel16.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 153, 153));
@@ -345,9 +331,9 @@ public class Interfaz extends javax.swing.JFrame {
         jlUser.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
         jlUser.setForeground(new java.awt.Color(153, 153, 153));
         jlUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlUser.setText("user");
-        JPmenu.add(jlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 130, 20));
-        JPmenu.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 10));
+        jlUser.setText("Salir");
+        JPmenu.add(jlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 60, 70, 20));
+        JPmenu.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 60, 30, 10));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8_Multiply_32px.png"))); // NOI18N
         jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -379,6 +365,32 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         JPmenu.add(jlidea, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
+
+        bSalir.setBackground(new java.awt.Color(255, 255, 255));
+        bSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-sign-out-45s30.png"))); // NOI18N
+        bSalir.setBorderPainted(false);
+        bSalir.setContentAreaFilled(false);
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+        JPmenu.add(bSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 20, 30, 40));
+
+        jLabel15.setBackground(new java.awt.Color(255, 99, 71));
+        jLabel15.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("comenzar");
+        JPmenu.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, -1));
+
+        jlUser1.setBackground(new java.awt.Color(255, 255, 255));
+        jlUser1.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
+        jlUser1.setForeground(new java.awt.Color(153, 153, 153));
+        jlUser1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlUser1.setText("user");
+        JPmenu.add(jlUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 20));
+        JPmenu.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 10));
 
         getContentPane().add(JPmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 760, 580));
 
@@ -494,7 +506,9 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton1.setVisible(false);
                 jLabel25.setVisible(false);
                 Ad1.jLabelYDown(90, 220, 10, 5, jLabel3);
-                Ad2.jLabelYUp(580, 305, 15, 5, jlsalir);
+                bSalir.setVisible(true);
+                jSeparator3.setVisible(true);
+                jlUser.setVisible(true);
 
                 Color fondo = new Color(0, 153, 153);
                 jpingreso.setBackground(fondo);
@@ -517,27 +531,6 @@ public class Interfaz extends javax.swing.JFrame {
         jtfcontraseña1.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfcontraseña1MouseClicked
-
-    private void jlsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlsalirMouseClicked
-        // TODO add your handling code here:
-        Ad1.jLabelYUp(220, 90, 10, 5, jLabel3);
-        Ad2.jLabelYDown(305, 580, 15, 5, jlsalir);
-        jtfUsuario.setText("Digite su usuario...");
-        jtfcontraseña1.setText("Digite su contraseña");
-        jlUser.setText("user");
-        logueado = null;
-        jtfUsuario.setVisible(true);
-        jlusuario.setVisible(true);
-        jliconusuario.setVisible(true);
-        js1.setVisible(true);
-        jlcontraseña.setVisible(true);
-        jliconseguridad.setVisible(true);
-        jtfcontraseña1.setVisible(true);
-        js2.setVisible(true);
-        jButton1.setVisible(true);
-        jLabel25.setVisible(true);
-        jpingreso.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jlsalirMouseClicked
 
     private void jlideaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlideaMouseClicked
 
@@ -568,6 +561,29 @@ public class Interfaz extends javax.swing.JFrame {
 // TODO add your handling code here:
 
     }//GEN-LAST:event_jlInternetMouseClicked
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        // TODO add your handling code here:
+        Ad1.jLabelYUp(220, 90, 10, 5, jLabel3);
+        bSalir.setVisible(false);
+        jSeparator3.setVisible(false);
+        jlUser.setVisible(false);
+        jtfUsuario.setText("Digite su usuario...");
+        jtfcontraseña1.setText("Digite su contraseña");
+        jlUser.setText("user");
+        logueado = null;
+        jtfUsuario.setVisible(true);
+        jlusuario.setVisible(true);
+        jliconusuario.setVisible(true);
+        js1.setVisible(true);
+        jlcontraseña.setVisible(true);
+        jliconseguridad.setVisible(true);
+        jtfcontraseña1.setVisible(true);
+        js2.setVisible(true);
+        jButton1.setVisible(true);
+        jLabel25.setVisible(true);
+        jpingreso.setBackground(Color.WHITE);
+    }//GEN-LAST:event_bSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -608,11 +624,12 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPmenu;
+    private javax.swing.JButton bSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel20;
@@ -625,15 +642,16 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     public javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel jlCalculadora;
     private javax.swing.JLabel jlInternet;
     private javax.swing.JLabel jlMusica;
     private javax.swing.JLabel jlUser;
+    private javax.swing.JLabel jlUser1;
     private javax.swing.JLabel jlcontraseña;
     private javax.swing.JLabel jliconseguridad;
     private javax.swing.JLabel jliconusuario;
     private javax.swing.JLabel jlidea;
-    private static javax.swing.JLabel jlsalir;
     private javax.swing.JLabel jlusuario;
     private javax.swing.JPanel jpingreso;
     private javax.swing.JSeparator js1;
