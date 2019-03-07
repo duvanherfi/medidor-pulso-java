@@ -73,16 +73,17 @@ Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) 
 
 ## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
+Usamos [Gitlab](https://gitlab.com) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://gitlab.com/dailysoft/pulso/tags).
 
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+* **Kevin Andres Cifuentes** - *Gerente*
+* **Andres Felipe Garcia** - *Documentación*
+* **Duvan Hernandez Figueroa** - *Desarrollador* - [duvanherfi](https://gitlab.com/duvanherfi)
+* **Johhan Andres Perez** - *Calidad*
+* 
 
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+También puedes mirar la lista de todos los [contribuyentes](https://gitlab.com/dailysoft/pulso/graphs/master) quíenes han participado en este proyecto. 
 
 ## Licencia 📄
 
@@ -98,4 +99,3 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
