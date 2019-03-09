@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.net.URI;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
@@ -33,9 +34,7 @@ public class Interfaz extends javax.swing.JFrame {
     private Informacion i1;
     private Formulario f;
 
-    private AnimationClass Ad1 = new AnimationClass();
     
-
     /**
      * Creates new form Login
      */
@@ -54,6 +53,38 @@ public class Interfaz extends javax.swing.JFrame {
                 getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
 
         return retValue;
+    }
+    
+    public void iniciarSesion(){
+        if (jtfUsuario.getText().length() != 0 && jtfUsuario.getText().length() != 0) {
+            c = Control_Usuario.loginUsuario(jtfUsuario.getText(), jtfcontraseña1.getText());
+            if (!c) {
+                JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingreso exitoso");
+                jlUser.setText(logueado.getNombres());
+                jtfUsuario.setVisible(false);
+                jlusuario.setVisible(false);
+                jliconusuario.setVisible(false);
+                js1.setVisible(false);
+                jlcontraseña.setVisible(false);
+                jliconseguridad.setVisible(false);
+                jtfcontraseña1.setVisible(false);
+                js2.setVisible(false);
+                jButton1.setVisible(false);
+                jLabel25.setVisible(false);
+                bSalir.setVisible(true);
+                jSeparator3.setVisible(true);
+                jlUser2.setVisible(true);
+
+                Color fondo = new Color(0, 153, 153);
+                jpingreso.setBackground(fondo);
+                
+                
+            }
+        } else {
+            JOptionPane.showConfirmDialog(null, "No debe dejar campos vacíos", "ADVERTENCIA", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     private synchronized static void crearInstancia() {
@@ -111,7 +142,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jlUser = new javax.swing.JLabel();
+        jlUser2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -119,7 +150,7 @@ public class Interfaz extends javax.swing.JFrame {
         jlidea = new javax.swing.JLabel();
         bSalir = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jlUser1 = new javax.swing.JLabel();
+        jlUser = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -176,6 +207,11 @@ public class Interfaz extends javax.swing.JFrame {
         jtfcontraseña1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfcontraseña1ActionPerformed(evt);
+            }
+        });
+        jtfcontraseña1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfcontraseña1KeyPressed(evt);
             }
         });
         jpingreso.add(jtfcontraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 160, 20));
@@ -327,13 +363,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-male-user-32.png"))); // NOI18N
         JPmenu.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 30, 40));
 
-        jlUser.setBackground(new java.awt.Color(255, 255, 255));
-        jlUser.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
-        jlUser.setForeground(new java.awt.Color(153, 153, 153));
-        jlUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlUser.setText("Salir");
-        jlUser.setVisible(false);
-        JPmenu.add(jlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 60, 70, 20));
+        jlUser2.setBackground(new java.awt.Color(255, 255, 255));
+        jlUser2.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
+        jlUser2.setForeground(new java.awt.Color(153, 153, 153));
+        jlUser2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlUser2.setText("Salir");
+        jlUser2.setVisible(false);
+        JPmenu.add(jlUser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 60, 70, 20));
 
         jSeparator3.setVisible(false);
         JPmenu.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 60, 30, 10));
@@ -374,6 +410,7 @@ public class Interfaz extends javax.swing.JFrame {
         bSalir.setBorderPainted(false);
         bSalir.setVisible(false);
         bSalir.setContentAreaFilled(false);
+        bSalir.setFocusable(false);
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bSalirActionPerformed(evt);
@@ -388,12 +425,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel15.setText("comenzar");
         JPmenu.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, -1));
 
-        jlUser1.setBackground(new java.awt.Color(255, 255, 255));
-        jlUser1.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
-        jlUser1.setForeground(new java.awt.Color(153, 153, 153));
-        jlUser1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlUser1.setText("user");
-        JPmenu.add(jlUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 20));
+        jlUser.setBackground(new java.awt.Color(255, 255, 255));
+        jlUser.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
+        jlUser.setForeground(new java.awt.Color(153, 153, 153));
+        jlUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlUser.setText("user");
+        JPmenu.add(jlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 20));
         JPmenu.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 70, 10));
 
         getContentPane().add(JPmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 760, 580));
@@ -478,7 +515,7 @@ public class Interfaz extends javax.swing.JFrame {
             Ventana = MostrarPulso.getInstancia();
 
             Ventana.setVisible(true);
-            dispose();
+            dispose();            
         } else {
             JOptionPane.showMessageDialog(null, "DEBE LOGUEARSE PARA ACCEDER A ESTÁ OPCIÓN", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
         }
@@ -492,35 +529,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        if (jtfUsuario.getText().length() != 0 && jtfUsuario.getText().length() != 0) {
-            c = Control_Usuario.loginUsuario(jtfUsuario.getText(), jtfcontraseña1.getText());
-            if (!c) {
-                JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado");
-            } else {
-                JOptionPane.showMessageDialog(null, "Ingreso exitoso");
-                jlUser.setText(logueado.getNombres());
-                jtfUsuario.setVisible(false);
-                jlusuario.setVisible(false);
-                jliconusuario.setVisible(false);
-                js1.setVisible(false);
-                jlcontraseña.setVisible(false);
-                jliconseguridad.setVisible(false);
-                jtfcontraseña1.setVisible(false);
-                js2.setVisible(false);
-                jButton1.setVisible(false);
-                jLabel25.setVisible(false);
-                Ad1.jLabelYDown(90, 220, 10, 5, jLabel3);
-                bSalir.setVisible(true);
-                jSeparator3.setVisible(true);
-                jlUser.setVisible(true);
-
-                Color fondo = new Color(0, 153, 153);
-                jpingreso.setBackground(fondo);
-                
-            }
-        } else {
-            JOptionPane.showConfirmDialog(null, "No debe dejar campos vacíos", "ADVERTENCIA", JOptionPane.PLAIN_MESSAGE);
-        }
+        iniciarSesion();
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -568,10 +577,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
-        Ad1.jLabelYUp(220, 90, 10, 5, jLabel3);
         bSalir.setVisible(false);
         jSeparator3.setVisible(false);
-        jlUser.setVisible(false);
+        jlUser2.setVisible(false);
         jtfUsuario.setText("Digite su usuario...");
         jtfcontraseña1.setText("Digite su contraseña");
         jlUser.setText("user");
@@ -588,6 +596,13 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel25.setVisible(true);
         jpingreso.setBackground(Color.WHITE);
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void jtfcontraseña1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfcontraseña1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            iniciarSesion();
+        }
+    }//GEN-LAST:event_jtfcontraseña1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -651,7 +666,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jlInternet;
     private javax.swing.JLabel jlMusica;
     private javax.swing.JLabel jlUser;
-    private javax.swing.JLabel jlUser1;
+    private javax.swing.JLabel jlUser2;
     private javax.swing.JLabel jlcontraseña;
     private javax.swing.JLabel jliconseguridad;
     private javax.swing.JLabel jliconusuario;
