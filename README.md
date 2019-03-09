@@ -14,7 +14,8 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 _Que cosas necesitas para instalar el software y como instalarlas_
 
 ```
-Da un ejemplo
+Se necesita tener netbeans, tener instalado XAMPP, e importar el Scrip de la base de datos. Fijarse de tener el usuario de la base de
+datos como "root" y la contraseña "root"
 ```
 
 ### Instalación 🔧
@@ -63,13 +64,7 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+* [NETBEANS](https://netbeans.org/) - El IDE más usado
 
 ## Versionado 📌
 
