@@ -11,6 +11,7 @@ import conexion.Conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import modelo.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import vista.Interfaz;
@@ -19,7 +20,7 @@ public abstract class Control_Usuario {
 
     private static Connection cn = new Conectar().getConectar();
     public static int id = 0;
-    
+
     // metodos
     public static int registrarUsuario(Usuario usuario) {
         int estado = -1;
@@ -36,7 +37,7 @@ public abstract class Control_Usuario {
 
             sql = "insert into persona values (NULL,?,?,?,?);";
             sql2 = " insert into usuarios values (?,?,?);";
-            
+
             pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, usuario.getNombres());
             pstm.setString(2, usuario.getApellidos());
@@ -53,12 +54,12 @@ public abstract class Control_Usuario {
             pstm.setInt(1, id);
             pstm.setString(2, usuario.getUsuario());
             pstm.setString(3, passwordMD5);
-            
+
             estado = pstm.executeUpdate();
-            
+
             sql = "insert into registro_pulso values (NULL,NULL,?,NULL);";
             pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstm.setInt(1,id);
+            pstm.setInt(1, id);
             estado = pstm.executeUpdate();
 
         } catch (MySQLIntegrityConstraintViolationException e) {
@@ -82,8 +83,8 @@ public abstract class Control_Usuario {
 
         return estado;
     }
-    
-    public static boolean loginUsuario(String usuario, String Pass) {
+
+    public static int loginUsuario(String usuario, String Pass) {
         //creamos un objeto de tipo Usario: data para guardar al sesion 
         boolean estadoLogin = false;
         String textoSinEncriptar = Pass;
@@ -96,25 +97,28 @@ public abstract class Control_Usuario {
 
             sql = "select * " + "from persona, usuarios "
                     + "where persona.id=usuarios.id_persona "
-                    + "and usuarios.user=?"
-                    + " and usuarios.contraseña=?;";
+                    + "and usuarios.user=?";
 
             // ejecutamos el query sql
             pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, usuario);
-            pstm.setString(2, passwordMD5);
 
             rs = pstm.executeQuery();
             estadoLogin = rs.first();
 
             //Almacenamos al obj data para almacenar la informacion del sesion
-            Interfaz.logueado = new Usuario(rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("edad"), rs.getInt("peso"), usuario, Pass);
-            id = rs.getInt(1);
-            Interfaz.logueado.setId(id);
-            
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
+            if (estadoLogin) {
+                if (!rs.getString("contraseña").equals(passwordMD5)) {
+                    return 3;
+                }
+                Interfaz.logueado = new Usuario(rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("edad"), rs.getInt("peso"), usuario, Pass);
+                id = rs.getInt(1);
+                Interfaz.logueado.setId(id);
+                return 1;
+            }
+
+        } catch (SQLException x) {
+            x.printStackTrace();
         } finally {
             try {
                 //cerramos la conexion
@@ -130,7 +134,7 @@ public abstract class Control_Usuario {
             }
 
         }
-        return estadoLogin;
+        return 0;
     }
 
 }

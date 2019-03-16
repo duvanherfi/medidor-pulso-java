@@ -8,6 +8,7 @@ package vista;
 import control.Control_Usuario;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 
@@ -16,8 +17,10 @@ import modelo.Usuario;
  * @author duvan
  */
 public class Formulario extends javax.swing.JFrame {
+
     private static Formulario INSTANCE = null;
     private static Interfaz i;
+
     /**
      * Creates new form Formulario
      */
@@ -26,25 +29,23 @@ public class Formulario extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-   
-    private synchronized static void crearInstancia(){
-        if(INSTANCE == null){
+
+    private synchronized static void crearInstancia() {
+        if (INSTANCE == null) {
             INSTANCE = new Formulario();
-            
+
         }
     }
-    
-    
-    public static Formulario getInstancia(){
+
+    public static Formulario getInstancia() {
         crearInstancia();
-       return INSTANCE;
+        return INSTANCE;
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
-
 
         return retValue;
     }
@@ -105,7 +106,7 @@ public class Formulario extends javax.swing.JFrame {
 
         jtfEdad.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         jtfEdad.setForeground(new java.awt.Color(0, 153, 153));
-        jtfEdad.setText("Digite su edad....(10)");
+        jtfEdad.setToolTipText("Ejemplo: 15.");
         jtfEdad.setBorder(null);
         jtfEdad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,6 +116,11 @@ public class Formulario extends javax.swing.JFrame {
         jtfEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfEdadActionPerformed(evt);
+            }
+        });
+        jtfEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfEdadKeyTyped(evt);
             }
         });
         jPanel2.add(jtfEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 220, 30));
@@ -127,7 +133,7 @@ public class Formulario extends javax.swing.JFrame {
 
         jtfNombres.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         jtfNombres.setForeground(new java.awt.Color(0, 153, 153));
-        jtfNombres.setText("Digite sus nombres.......");
+        jtfNombres.setToolTipText("Ejemplo: Pepito.");
         jtfNombres.setBorder(null);
         jtfNombres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,6 +143,11 @@ public class Formulario extends javax.swing.JFrame {
         jtfNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfNombresActionPerformed(evt);
+            }
+        });
+        jtfNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombresKeyTyped(evt);
             }
         });
         jPanel2.add(jtfNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 220, 30));
@@ -149,7 +160,7 @@ public class Formulario extends javax.swing.JFrame {
 
         jtfApellidos.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         jtfApellidos.setForeground(new java.awt.Color(0, 153, 153));
-        jtfApellidos.setText("Digite sus apellidos....");
+        jtfApellidos.setToolTipText("Ejemplo: Perez.");
         jtfApellidos.setBorder(null);
         jtfApellidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -159,6 +170,11 @@ public class Formulario extends javax.swing.JFrame {
         jtfApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfApellidosActionPerformed(evt);
+            }
+        });
+        jtfApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfApellidosKeyTyped(evt);
             }
         });
         jPanel2.add(jtfApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 220, 30));
@@ -172,7 +188,7 @@ public class Formulario extends javax.swing.JFrame {
 
         jtfPeso.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         jtfPeso.setForeground(new java.awt.Color(0, 153, 153));
-        jtfPeso.setText("Digite su pero en kilogramos (85)....");
+        jtfPeso.setToolTipText("Ejemplo: 75.");
         jtfPeso.setBorder(null);
         jtfPeso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -184,6 +200,11 @@ public class Formulario extends javax.swing.JFrame {
                 jtfPesoActionPerformed(evt);
             }
         });
+        jtfPeso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPesoKeyTyped(evt);
+            }
+        });
         jPanel2.add(jtfPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
@@ -193,7 +214,7 @@ public class Formulario extends javax.swing.JFrame {
 
         jtfUsuario.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
         jtfUsuario.setForeground(new java.awt.Color(0, 153, 153));
-        jtfUsuario.setText("Digite su nombre de usuario....");
+        jtfUsuario.setToolTipText("Ejemplo: pepito22.");
         jtfUsuario.setBorder(null);
         jtfUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -203,6 +224,11 @@ public class Formulario extends javax.swing.JFrame {
         jtfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfUsuarioActionPerformed(evt);
+            }
+        });
+        jtfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfUsuarioKeyTyped(evt);
             }
         });
         jPanel2.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 220, 30));
@@ -251,7 +277,8 @@ public class Formulario extends javax.swing.JFrame {
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, 90, -1));
 
         jPassword.setForeground(new java.awt.Color(0, 153, 153));
-        jPassword.setText("Digite la contraseña..");
+        jPassword.setText("123456");
+        jPassword.setToolTipText("Ejemplo:12323sdsa.");
         jPassword.setBorder(null);
         jPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -290,36 +317,42 @@ public class Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
-     INSTANCE=null;
-     i= Interfaz.getInstancia();
-     i.show();
-     
-     dispose();
-        
+        INSTANCE = null;
+        i = Interfaz.getInstancia();
+        i.show();
+
+        dispose();
+
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-try{
-    
-        if(Control_Usuario.registrarUsuario(
-                new Usuario(jtfNombres.getText(), jtfApellidos.getText(), Integer.parseInt(jtfEdad.getText()),
-                        Integer.parseInt(jtfPeso.getText()), jtfUsuario.getText(), jPassword.getText()))==1)
-        {    JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
-                jtfNombres.setText("Digite el usuario...");
-                jtfApellidos.setText("Digite el apellido...");
-                jtfEdad.setText("Digite la edad(10)...");
-                jtfPeso.setText("Digite el peso(85)...");
-                jtfUsuario.setText("Digite el usuario...");
-                jPassword.setText("Digite al contraseña...");
+        try {
+            
+            if(jtfNombres.getText().getBytes().length ==0 && jtfApellidos.getText().getBytes().length ==0 && jtfEdad.getText().getBytes().length ==0 &&
+                    jtfPeso.getText().getBytes().length ==0 && jtfUsuario.getText().getBytes().length ==0 && jPassword.getText().getBytes().length ==0 ){
                 
-                
-        }
-        else
-              JOptionPane.showMessageDialog(null, "No se pudo registrar, el usuario debe llenar todos los campos");
-}catch(Exception nfe){
-JOptionPane.showMessageDialog(null, "Compruebe los datos ingresados");
+                if (Control_Usuario.registrarUsuario(
+                        new Usuario(jtfNombres.getText(), jtfApellidos.getText(), Integer.parseInt(jtfEdad.getText()),
+                                Integer.parseInt(jtfPeso.getText()), jtfUsuario.getText(), jPassword.getText())) == 1) {
+                    JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
+                    jtfNombres.setText("Digite el usuario...");
+                    jtfApellidos.setText("Digite el apellido...");
+                    jtfEdad.setText("Digite la edad(10)...");
+                    jtfPeso.setText("Digite el peso(85)...");
+                    jtfUsuario.setText("Digite el usuario...");
+                    jPassword.setText("Digite al contraseña...");
 
-}
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo registrar, el usuario debe llenar todos los campos.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Por favor diligencie todos los campos.");
+            }
+            
+        } catch (Exception nfe) {
+            JOptionPane.showMessageDialog(null, "Compruebe los datos ingresados.");
+
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jtfNombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfNombresMouseClicked
@@ -345,14 +378,49 @@ JOptionPane.showMessageDialog(null, "Compruebe los datos ingresados");
 
     private void jtfUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtfUsuarioMouseClicked
 
-jtfUsuario.setText("");
+        jtfUsuario.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfUsuarioMouseClicked
 
     private void jPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordMouseClicked
-     jPassword.setText("");
+        jPassword.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordMouseClicked
+
+    private void jtfNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombresKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfNombresKeyTyped
+
+    private void jtfApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidosKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfApellidosKeyTyped
+
+    private void jtfEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEdadKeyTyped
+        // TODO add your handling code here:
+        if(Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfEdadKeyTyped
+
+    private void jtfPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoKeyTyped
+        // TODO add your handling code here:
+        if(Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPesoKeyTyped
+
+    private void jtfUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfUsuarioKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isLetter(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfUsuarioKeyTyped
 
     /**
      * @param args the command line arguments

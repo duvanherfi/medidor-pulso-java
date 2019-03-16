@@ -25,7 +25,7 @@ import modelo.Usuario;
 public class Interfaz extends javax.swing.JFrame {
     private static Interfaz INSTANCE = null;
 
-    public static boolean c;
+    public static int c;
     public static Usuario logueado;
 
     private Desarrolladores d1;
@@ -56,11 +56,15 @@ public class Interfaz extends javax.swing.JFrame {
     }
     
     public void iniciarSesion(){
-        if (jtfUsuario.getText().length() != 0 && jtfUsuario.getText().length() != 0) {
+        if (jtfUsuario.getText().length() != 0 && jtfcontraseña1.getText().length() != 0) {
             c = Control_Usuario.loginUsuario(jtfUsuario.getText(), jtfcontraseña1.getText());
-            if (!c) {
+            if (c==0) {
                 JOptionPane.showMessageDialog(null, "El usuario no se encuentra registrado");
-            } else {
+            }
+            else if(c==3){
+                JOptionPane.showMessageDialog(null, "Ingrese por favor una contraseña correcta");
+            }
+            else {
                 JOptionPane.showMessageDialog(null, "Ingreso exitoso");
                 jlUser.setText(logueado.getNombres());
                 jtfUsuario.setVisible(false);
@@ -410,6 +414,7 @@ public class Interfaz extends javax.swing.JFrame {
         bSalir.setBorderPainted(false);
         bSalir.setVisible(false);
         bSalir.setContentAreaFilled(false);
+        bSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bSalir.setFocusable(false);
         bSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

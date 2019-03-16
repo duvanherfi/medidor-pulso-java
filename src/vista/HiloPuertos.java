@@ -7,10 +7,7 @@ package vista;
 
 import com.panamahitek.ArduinoException;
 import com.panamahitek.PanamaHitek_Arduino;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import jssc.SerialPortException;
 
 /**
  *
@@ -37,7 +34,7 @@ public class HiloPuertos extends Thread {
         while (true) {
             if (!h) {
                 for (int i = 0; i < Arduino.getSerialPorts().size(); i++) {
-                    if ((Arduino.getSerialPorts().size() < 1) || (Arduino.getSerialPorts().get(i).equals("COM4")) || (Arduino.getSerialPorts().get(i).equals("COM5"))) {
+                    if ((Arduino.getSerialPorts().size() < 1) || (Arduino.getSerialPorts().get(i).equals("COM4")) || (Arduino.getSerialPorts().get(i).equals("COM5")) || (Arduino.getSerialPorts().get(i).equals("COM7"))) {
                         MostrarPulso.jButton2.setEnabled(true);
                         h = true;
                         MostrarPulso.puerto = Arduino.getSerialPorts().get(i);
