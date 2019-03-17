@@ -160,7 +160,7 @@ public class MostrarPulso extends javax.swing.JFrame {
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setEnabled(true);
+        jButton1.setEnabled(false);
         jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,9 +246,12 @@ public class MostrarPulso extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (Interfaz.logueado != null) {
             try {
-                Arduino.killArduinoConnection();
+                Arduino.flushSerialPort();
+                Arduino.killArduinoConnection();                
             } catch (ArduinoException ex) {
-                System.err.println(ex.getMessage());
+                ex.printStackTrace();
+            } catch (SerialPortException ex) {
+                ex.printStackTrace();
             }
             pulsoreporte = Integer.parseInt(pulso);
             r = Reporte.getInstancia();
@@ -267,6 +270,7 @@ public class MostrarPulso extends javax.swing.JFrame {
 
             Arduino.arduinoRX(puerto, 9600, evento);
             JOptionPane.showMessageDialog(null, "ARDUINO CONECTADO CORRECTAMENTE");
+            jButton1.setEnabled(false);
             jLabel3.setVisible(true);
             jLabel4.setVisible(true);
             jLabel2.setVisible(true);

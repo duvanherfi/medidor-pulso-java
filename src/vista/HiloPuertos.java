@@ -8,6 +8,7 @@ package vista;
 import com.panamahitek.ArduinoException;
 import com.panamahitek.PanamaHitek_Arduino;
 import javax.swing.JOptionPane;
+import jssc.SerialPortException;
 
 /**
  *
@@ -50,12 +51,15 @@ public class HiloPuertos extends Thread {
                     if (Arduino.getSerialPorts().size() == 1 || Arduino.getSerialPorts().isEmpty()) {
 
                         MostrarPulso.jButton2.setEnabled(false);
+                        MostrarPulso.jButton1.setEnabled(false);
                         JOptionPane.showMessageDialog(null, "Arduino Desconectado");
                         try {
-
+                            Arduino.flushSerialPort();
                             Arduino.killArduinoConnection();
                         } catch (ArduinoException ex) {
 
+                        } catch (SerialPortException ex) {
+                            
                         }
                         h = false;
                     }
