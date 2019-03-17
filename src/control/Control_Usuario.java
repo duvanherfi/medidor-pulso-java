@@ -11,6 +11,9 @@ import conexion.Conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import vista.Interfaz;
@@ -19,9 +22,10 @@ public abstract class Control_Usuario {
 
     private static Connection cn = new Conectar().getConectar();
     public static int id = 0;
-    
+
     // metodos
     public static int registrarUsuario(Usuario usuario) {
+        Connection re = new Conectar().getConectar();
         int estado = -1;
 
         PreparedStatement pstm = null;
@@ -33,40 +37,55 @@ public abstract class Control_Usuario {
 
         try {
             //realizamos la conexion sql
+            re.setAutoCommit(false);
 
             sql = "insert into persona values (NULL,?,?,?,?);";
             sql2 = " insert into usuarios values (?,?,?);";
-            
-            pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            pstm = re.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, usuario.getNombres());
             pstm.setString(2, usuario.getApellidos());
             pstm.setInt(3, usuario.getEdad());
             pstm.setInt(4, usuario.getPeso());
             estado = pstm.executeUpdate();
+            re.commit();
 
             ResultSet rs = pstm.getGeneratedKeys();
             if (rs != null && rs.next()) {
                 id = rs.getInt(1);
             }
 
-            pstm = cn.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
+            pstm = re.prepareStatement(sql2, Statement.RETURN_GENERATED_KEYS);
             pstm.setInt(1, id);
             pstm.setString(2, usuario.getUsuario());
             pstm.setString(3, passwordMD5);
-            
             estado = pstm.executeUpdate();
-            
+            re.commit();
+
             sql = "insert into registro_pulso values (NULL,NULL,?,NULL);";
-            pstm = cn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pstm.setInt(1,id);
+            pstm = re.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pstm.setInt(1, id);
             estado = pstm.executeUpdate();
+            re.commit();
 
         } catch (MySQLIntegrityConstraintViolationException e) {
-            e.printStackTrace();
+            
+            try {
+                re.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
             return -2;
         } catch (Exception e) {
-            // TODO: handle exception
+            
             e.printStackTrace();
+            try {
+                re.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
             return -2;
         } finally {
             try {
@@ -74,7 +93,10 @@ public abstract class Control_Usuario {
                 if (pstm != null) {
                     pstm.close();
                 }
-                //if (cn!=null) cn.close();
+                if (re != null) {
+                    re.close();
+                }
+
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
@@ -82,7 +104,7 @@ public abstract class Control_Usuario {
 
         return estado;
     }
-    
+
     public static boolean loginUsuario(String usuario, String Pass) {
         //creamos un objeto de tipo Usario: data para guardar al sesion 
         boolean estadoLogin = false;
@@ -111,7 +133,7 @@ public abstract class Control_Usuario {
             Interfaz.logueado = new Usuario(rs.getString("nombres"), rs.getString("apellidos"), rs.getInt("edad"), rs.getInt("peso"), usuario, Pass);
             id = rs.getInt(1);
             Interfaz.logueado.setId(id);
-            
+
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -124,7 +146,9 @@ public abstract class Control_Usuario {
                 if (pstm != null) {
                     pstm.close();
                 }
-                //if (cn!=null) cn.close();
+                if (cn != null) {
+                    cn.close();
+                }
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
