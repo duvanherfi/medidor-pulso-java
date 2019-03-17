@@ -53,6 +53,10 @@ public class MostrarPulso extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         com.start ();
+        recomendacion.setText("Estimado "+Interfaz.logueado.getNombres()+",  Por favor mantener\nla mano estática en el sensor de pulso y\n"
+                + "recuerde no remover el dedo del sensor,\nsí desea generar su reporte.");
+        
+        
 
     }
     
@@ -85,6 +89,8 @@ public class MostrarPulso extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        recomendacion = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,19 +127,19 @@ public class MostrarPulso extends javax.swing.JFrame {
 
         jLabel2.setVisible(false);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/heartbeat.gif"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 220, 160));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 220, 160));
 
         jLabel3.setVisible(false);
         jLabel3.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("BPM");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 170, 120));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 170, 120));
 
         jLabel4.setVisible(false);
         jLabel4.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("80");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 180, 120));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 180, 120));
 
         jLabel17.setBackground(new java.awt.Color(255, 99, 71));
         jLabel17.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
@@ -180,6 +186,20 @@ public class MostrarPulso extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 100, 90));
         jButton1.setBorderPainted(false);
         jButton1.setMargin(insets());
+
+        recomendacion.setEditable(false);
+        recomendacion.setColumns(20);
+        recomendacion.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        recomendacion.setRows(5);
+        recomendacion.setAutoscrolls(false);
+        recomendacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recomendación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 0, 14))); // NOI18N
+        recomendacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        recomendacion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        recomendacion.setFocusable(false);
+        recomendacion.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jScrollPane1.setViewportView(recomendacion);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 320, 140));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 590));
 
@@ -306,5 +326,7 @@ public class MostrarPulso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea recomendacion;
     // End of variables declaration//GEN-END:variables
 }

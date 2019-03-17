@@ -286,6 +286,7 @@ public class Reporte extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-document-96.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -294,6 +295,7 @@ public class Reporte extends javax.swing.JFrame {
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 100));
 
         jLabel7.setFont(new java.awt.Font("Decker", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 153));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Recomendaciones");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 140, 20));
