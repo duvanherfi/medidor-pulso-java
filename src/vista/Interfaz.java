@@ -106,7 +106,7 @@ public class Interfaz extends javax.swing.JFrame {
     public void Openfacebook() {
 
         try {
-            Desktop.getDesktop().browse(URI.create("https://www.facebook.com/uvanherfi"));
+            Desktop.getDesktop().browse(URI.create("https://www.facebook.com/DailySoft-584972955312327/?modal=admin_todo_tour"));
         } catch (Exception e) {
         }
 
