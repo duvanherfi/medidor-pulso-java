@@ -37,6 +37,7 @@ public class HiloPuertos extends Thread {
                 for (int i = 0; i < Arduino.getSerialPorts().size(); i++) {
                     if ((Arduino.getSerialPorts().size() < 1) || (Arduino.getSerialPorts().get(i).equals("COM4")) || (Arduino.getSerialPorts().get(i).equals("COM5")) || (Arduino.getSerialPorts().get(i).equals("COM7"))) {
                         MostrarPulso.jButton2.setEnabled(true);
+                        MostrarPulso.jButton1.setEnabled(true);
                         h = true;
                         MostrarPulso.puerto = Arduino.getSerialPorts().get(i);
                         break;
@@ -67,6 +68,7 @@ public class HiloPuertos extends Thread {
             } catch (NullPointerException npe) {
                 h = false;
                 MostrarPulso.jButton2.setEnabled(false);
+                MostrarPulso.jButton1.setEnabled(true);
                 
                 JOptionPane.showMessageDialog(null, "Arduino Desconectado");
 
