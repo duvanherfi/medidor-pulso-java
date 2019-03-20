@@ -323,32 +323,39 @@ public class Formulario extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         try {
             int estado;
-            if(jtfNombres.getText().getBytes().length !=0 && jtfApellidos.getText().getBytes().length !=0 &&
-                    jtfEdad.getText().getBytes().length !=0 && jtfPeso.getText().getBytes().length !=0 &&
-                    jtfUsuario.getText().getBytes().length !=0 && jPassword.getText().getBytes().length !=0 ){
-                estado=Control_Usuario.registrarUsuario(
-                        new Usuario(jtfNombres.getText(), jtfApellidos.getText(), Integer.parseInt(jtfEdad.getText()),
-                                Integer.parseInt(jtfPeso.getText()), jtfUsuario.getText(), jPassword.getText()));
-                
-                if ( estado== 1) {
-                    JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
-                    jtfNombres.setText("");
-                    jtfApellidos.setText("");
-                    jtfEdad.setText("");
-                    jtfPeso.setText("");
-                    jtfUsuario.setText("");
-                    jPassword.setText("123333");
+            if (jtfNombres.getText().getBytes().length != 0 && jtfApellidos.getText().getBytes().length != 0
+                    && jtfEdad.getText().getBytes().length != 0 && jtfPeso.getText().getBytes().length != 0
+                    && jtfUsuario.getText().getBytes().length != 0 && jPassword.getText().getBytes().length != 0) {
 
-                } else if(estado==-3){
-                    JOptionPane.showMessageDialog(null, "No se pudo registrar, el usuario ya existe.");
+                if (Integer.parseInt(jtfEdad.getText()) <= 0 || Integer.parseInt(jtfEdad.getText()) > 100) {
+                    JOptionPane.showMessageDialog(null, "El rango de la edad no corresponde al intervalo 1-100");
+                } else if (Integer.parseInt(jtfPeso.getText()) <= 0 || Integer.parseInt(jtfPeso.getText()) > 250) {
+                    JOptionPane.showMessageDialog(null, "El rango del peso no corresponde al intervalo 1-250");
+                } else {
+                    estado = Control_Usuario.registrarUsuario(
+                            new Usuario(jtfNombres.getText(), jtfApellidos.getText(), Integer.parseInt(jtfEdad.getText()),
+                                    Integer.parseInt(jtfPeso.getText()), jtfUsuario.getText(), jPassword.getText()));
+
+                    if (estado == 1) {
+                        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente");
+                        jtfNombres.setText("");
+                        jtfApellidos.setText("");
+                        jtfEdad.setText("");
+                        jtfPeso.setText("");
+                        jtfUsuario.setText("");
+                        jPassword.setText("123333");
+
+                    } else if (estado == -3) {
+                        JOptionPane.showMessageDialog(null, "No se pudo registrar, el usuario ya existe.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo registrar, revisar los campos e intentar nuevamente");
+                    }
                 }
-                else {
-                    JOptionPane.showMessageDialog(null, "No se pudo registrar, revisar los campos e intentar nuevamente");
-                }
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Por favor diligencie todos los campos.");
             }
-            
+
         } catch (Exception nfe) {
             JOptionPane.showMessageDialog(null, "Compruebe los datos ingresados.");
 
@@ -389,28 +396,28 @@ public class Formulario extends javax.swing.JFrame {
 
     private void jtfNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombresKeyTyped
         // TODO add your handling code here:
-        if(!Character.isLetter(evt.getKeyChar())){
+        if (!Character.isLetter(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfNombresKeyTyped
 
     private void jtfApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidosKeyTyped
         // TODO add your handling code here:
-        if(!Character.isLetter(evt.getKeyChar())){
+        if (!Character.isLetter(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfApellidosKeyTyped
 
     private void jtfEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEdadKeyTyped
         // TODO add your handling code here:
-        if(Character.isLetter(evt.getKeyChar())){
+        if (Character.isLetter(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfEdadKeyTyped
 
     private void jtfPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoKeyTyped
         // TODO add your handling code here:
-        if(Character.isLetter(evt.getKeyChar())){
+        if (Character.isLetter(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfPesoKeyTyped
