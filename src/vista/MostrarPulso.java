@@ -102,7 +102,7 @@ public class MostrarPulso extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 153)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Decker", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Wide Latin", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("PULSO");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
@@ -131,25 +131,27 @@ public class MostrarPulso extends javax.swing.JFrame {
 
         jLabel3.setVisible(false);
         jLabel3.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("BPM");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 170, 120));
 
         jLabel4.setVisible(false);
         jLabel4.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 153));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("80");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 180, 120));
 
         jLabel17.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel17.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 153, 153));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("conectar");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 100, -1));
 
         jLabel15.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel15.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 153, 153));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("reporte");
@@ -300,13 +302,13 @@ public class MostrarPulso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

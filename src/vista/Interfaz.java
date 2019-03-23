@@ -32,7 +32,7 @@ public class Interfaz extends javax.swing.JFrame {
     private Reporte r;
     private MostrarPulso Ventana;
     private Informacion i1;
-    private Formulario f;
+    private Registro f;
 
     
     /**
@@ -344,22 +344,22 @@ public class Interfaz extends javax.swing.JFrame {
         JPmenu.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 120, 110));
 
         jLabel13.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel13.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel13.setText("bluetooh");
-        JPmenu.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, -1, -1));
+        jLabel13.setText("Bluetooth");
+        JPmenu.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 480, -1, -1));
 
         jLabel16.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel16.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel16.setText("registrarse");
-        JPmenu.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, -1, -1));
+        jLabel16.setText("Registrarse");
+        JPmenu.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 230, -1, -1));
 
         jLabel18.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel18.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 153, 153));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("¿sabías qué?");
+        jLabel18.setText("¿Sabías qué?");
         JPmenu.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 120, -1));
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
@@ -424,10 +424,10 @@ public class Interfaz extends javax.swing.JFrame {
         JPmenu.add(bSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 20, 30, 40));
 
         jLabel15.setBackground(new java.awt.Color(255, 99, 71));
-        jLabel15.setFont(new java.awt.Font("Eras Demi ITC", 0, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 153, 153));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("comenzar");
+        jLabel15.setText("Comenzar");
         JPmenu.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 120, -1));
 
         jlUser.setBackground(new java.awt.Color(255, 255, 255));
@@ -486,7 +486,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
         jLabel10.setBorder(null);
-        f = Formulario.getInstancia();
+        f = Registro.getInstancia();
         f.setVisible(true);
         dispose();
 

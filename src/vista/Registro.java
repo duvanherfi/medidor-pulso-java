@@ -16,15 +16,15 @@ import modelo.Usuario;
  *
  * @author duvan
  */
-public class Formulario extends javax.swing.JFrame {
+public class Registro extends javax.swing.JFrame {
 
-    private static Formulario INSTANCE = null;
+    private static Registro INSTANCE = null;
     private static Interfaz i;
 
     /**
      * Creates new form Formulario
      */
-    public Formulario() {
+    public Registro() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -32,12 +32,12 @@ public class Formulario extends javax.swing.JFrame {
 
     private synchronized static void crearInstancia() {
         if (INSTANCE == null) {
-            INSTANCE = new Formulario();
+            INSTANCE = new Registro();
 
         }
     }
 
-    public static Formulario getInstancia() {
+    public static Registro getInstancia() {
         crearInstancia();
         return INSTANCE;
     }
@@ -439,20 +439,21 @@ public class Formulario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Formulario().setVisible(true);
+                new Registro().setVisible(true);
             }
         });
     }
