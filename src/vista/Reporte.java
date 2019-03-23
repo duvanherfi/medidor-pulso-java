@@ -99,7 +99,6 @@ public class Reporte extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         apellido = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         peso = new javax.swing.JTextField();
@@ -129,8 +128,9 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        mostrar.setEditable(false);
         mostrar.setColumns(20);
-        mostrar.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        mostrar.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         mostrar.setRows(5);
         jScrollPane1.setViewportView(mostrar);
 
@@ -161,11 +161,11 @@ public class Reporte extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Edad:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, -1, -1));
 
         edad.setEditable(false);
         edad.setBackground(new java.awt.Color(255, 255, 255));
-        edad.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        edad.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         edad.setForeground(new java.awt.Color(0, 153, 153));
         edad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         edad.setBorder(null);
@@ -174,8 +174,8 @@ public class Reporte extends javax.swing.JFrame {
                 edadActionPerformed(evt);
             }
         });
-        jPanel2.add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 220, 30));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 210, 10));
+        jPanel2.add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 220, 30));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, 220, 10));
 
         jLabel3.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
@@ -184,21 +184,21 @@ public class Reporte extends javax.swing.JFrame {
 
         nombre.setEditable(false);
         nombre.setBackground(new java.awt.Color(255, 255, 255));
-        nombre.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        nombre.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         nombre.setForeground(new java.awt.Color(0, 153, 153));
         nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nombre.setBorder(null);
-        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 220, 30));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 210, 10));
+        jPanel2.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 220, 30));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 220, 10));
 
         jLabel4.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("Apellidos: ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
 
         apellido.setEditable(false);
         apellido.setBackground(new java.awt.Color(255, 255, 255));
-        apellido.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        apellido.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         apellido.setForeground(new java.awt.Color(0, 153, 153));
         apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         apellido.setBorder(null);
@@ -207,19 +207,18 @@ public class Reporte extends javax.swing.JFrame {
                 apellidoActionPerformed(evt);
             }
         });
-        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 220, 30));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 10));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 210, 10));
+        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 220, 30));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 220, 10));
 
         jLabel5.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Nombres: ");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 240, 10));
 
         peso.setEditable(false);
         peso.setBackground(new java.awt.Color(255, 255, 255));
-        peso.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        peso.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         peso.setForeground(new java.awt.Color(0, 153, 153));
         peso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         peso.setBorder(null);
@@ -254,26 +253,26 @@ public class Reporte extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Pulso:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, -1, -1));
-        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 240, 10));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, -1, -1));
+        jPanel2.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 240, 10));
 
         pulso.setEditable(false);
         pulso.setBackground(new java.awt.Color(255, 255, 255));
-        pulso.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        pulso.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         pulso.setForeground(new java.awt.Color(0, 153, 153));
         pulso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pulso.setBorder(null);
-        jPanel2.add(pulso, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 230, 30));
+        jPanel2.add(pulso, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 230, 30));
 
         jLabel8.setFont(new java.awt.Font("Decker", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("Su pulso maximo es:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, -1, -1));
-        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 240, 10));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, -1, -1));
+        jPanel2.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 240, 10));
 
         pulsomax.setEditable(false);
         pulsomax.setBackground(new java.awt.Color(255, 255, 255));
-        pulsomax.setFont(new java.awt.Font("Decker", 0, 14)); // NOI18N
+        pulsomax.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
         pulsomax.setForeground(new java.awt.Color(0, 153, 153));
         pulsomax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pulsomax.setBorder(null);
@@ -282,7 +281,7 @@ public class Reporte extends javax.swing.JFrame {
                 pulsomaxActionPerformed(evt);
             }
         });
-        jPanel2.add(pulsomax, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 230, 30));
+        jPanel2.add(pulsomax, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 230, 30));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-document-96.png"))); // NOI18N
         jButton1.setContentAreaFilled(false);
@@ -407,7 +406,6 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;

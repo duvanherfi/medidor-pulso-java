@@ -7,10 +7,12 @@ package vista;
 
 import com.panamahitek.ArduinoException;
 import com.panamahitek.PanamaHitek_Arduino;
+import control.Control_Reportes;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.Control;
 import javax.swing.JOptionPane;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
@@ -31,8 +33,6 @@ public class MostrarPulso extends javax.swing.JFrame {
     private Reporte r;
     private HiloPuertos com = new HiloPuertos();
 
-    
-
     /**
      * Creates new form Formulario
      */
@@ -52,19 +52,17 @@ public class MostrarPulso extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        com.start ();
-        recomendacion.setText("Estimado "+Interfaz.logueado.getNombres()+",  Por favor mantener\nla mano estática en el sensor de pulso y\n"
+        com.start();
+        pulsoInter.setText(String.valueOf(Control_Reportes.getPulso(Interfaz.logueado.getId())));
+        recomendacion.setText("Estimado " + Interfaz.logueado.getNombres() + ",  Por favor mantener\nla mano estática en el sensor de pulso y\n"
                 + "recuerde no remover el dedo del sensor,\nsí desea generar su reporte.");
-        
-        
 
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("imagenes/logo.png"));
-
 
         return retValue;
     }
@@ -84,7 +82,7 @@ public class MostrarPulso extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        pulsoInter = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -129,19 +127,17 @@ public class MostrarPulso extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/heartbeat.gif"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 220, 160));
 
-        jLabel3.setVisible(false);
         jLabel3.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 153));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("BPM");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 170, 120));
 
-        jLabel4.setVisible(false);
-        jLabel4.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("80");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 180, 120));
+        pulsoInter.setFont(new java.awt.Font("Wide Latin", 1, 36)); // NOI18N
+        pulsoInter.setForeground(new java.awt.Color(0, 153, 153));
+        pulsoInter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pulsoInter.setText("80");
+        jPanel2.add(pulsoInter, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 180, 120));
 
         jLabel17.setBackground(new java.awt.Color(255, 99, 71));
         jLabel17.setFont(new java.awt.Font("Decker", 0, 18)); // NOI18N
@@ -219,7 +215,7 @@ public class MostrarPulso extends javax.swing.JFrame {
 
                     pulsoreporte = Integer.parseInt(pulso);
 
-                    jLabel4.setText(String.valueOf(pulsoreporte));
+                    pulsoInter.setText(String.valueOf(pulsoreporte));
 
                 }
 
@@ -237,6 +233,17 @@ public class MostrarPulso extends javax.swing.JFrame {
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         INSTANCE = null;
+        if (Arduino != null) {
+            try {
+                Arduino.flushSerialPort();
+                Arduino.killArduinoConnection();
+            } catch (ArduinoException ex) {
+                ex.printStackTrace();
+            } catch (SerialPortException ex) {
+                ex.printStackTrace();
+            }
+        }
+
         i = Interfaz.getInstancia();
         i.show();
 
@@ -249,7 +256,7 @@ public class MostrarPulso extends javax.swing.JFrame {
         if (Interfaz.logueado != null) {
             try {
                 Arduino.flushSerialPort();
-                Arduino.killArduinoConnection();                
+                Arduino.killArduinoConnection();
             } catch (ArduinoException ex) {
                 ex.printStackTrace();
             } catch (SerialPortException ex) {
@@ -272,9 +279,8 @@ public class MostrarPulso extends javax.swing.JFrame {
 
             Arduino.arduinoRX(puerto, 9600, evento);
             JOptionPane.showMessageDialog(null, "ARDUINO CONECTADO CORRECTAMENTE");
-            jButton1.setEnabled(false);
-            jLabel3.setVisible(true);
-            jLabel4.setVisible(true);
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(false);
             jLabel2.setVisible(true);
 
         } catch (ArduinoException ex) {
@@ -330,9 +336,9 @@ public class MostrarPulso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
-    public static javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JLabel pulsoInter;
     private javax.swing.JTextArea recomendacion;
     // End of variables declaration//GEN-END:variables
 }

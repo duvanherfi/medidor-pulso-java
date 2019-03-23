@@ -12,19 +12,57 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import modelo.Registro_Pulso;
-import modelo.Usuario;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import vista.Interfaz;
 
 public abstract class Control_Reportes {
 
-    private static Connection cn = new Conectar().getConectar();
     public static int id = 0;
-    
+
     // metodos
+    public static int getPulso(int id) {
+        Connection cn = new Conectar().getConectar();
+        int pulso = 0;
+        ResultSet r;
+        PreparedStatement pstm = null;
+        String sql = null;
+
+        try {
+            //realizamos la conexion sql
+            sql = "select pulso from registro_pulso where id_persona=?;";
+
+            pstm = cn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            pstm.setInt(1, id);
+
+            r = pstm.executeQuery();
+            r.first();
+            pulso = r.getInt(1);
+
+        } catch (MySQLIntegrityConstraintViolationException e) {
+            e.printStackTrace();
+            return 0;
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            return 0;
+        } finally {
+            try {
+                //cerramos la conexion
+                if (pstm != null) {
+                    pstm.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+
+        return pulso;
+    }
+
     public static Registro_Pulso getReporte(int id) {
-        Registro_Pulso registro =null;
+        Connection cn = new Conectar().getConectar();
+        Registro_Pulso registro = null;
         ResultSet r;
         PreparedStatement pstm = null;
         String sql = null;
@@ -34,12 +72,12 @@ public abstract class Control_Reportes {
             sql = "select * from registro_pulso,rango_pulso where id=? "
                     + "and registro_pulso.rango=rango_pulso.rango;";
 
-            pstm = cn.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            pstm = cn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setInt(1, id);
-            r=pstm.executeQuery();
+            r = pstm.executeQuery();
             r.first();
-            registro = new Registro_Pulso(r.getString("rango"),id,r.getInt("pulso"));
-            registro.setRecomendacion(r.getString("descripcion")+"\n"+r.getString("recomendacion"));
+            registro = new Registro_Pulso(r.getString("rango"), id, r.getInt("pulso"));
+            registro.setRecomendacion(r.getString("descripcion") + "\n" + r.getString("recomendacion"));
 
         } catch (MySQLIntegrityConstraintViolationException e) {
             e.printStackTrace();
@@ -54,7 +92,9 @@ public abstract class Control_Reportes {
                 if (pstm != null) {
                     pstm.close();
                 }
-                //if (cn!=null) cn.close();
+                if (cn != null) {
+                    cn.close();
+                }
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
@@ -62,8 +102,9 @@ public abstract class Control_Reportes {
 
         return registro;
     }
-    
+
     public static int registrarReporte(Registro_Pulso r) {
+        Connection cn = new Conectar().getConectar();
         int estado = -1;
 
         PreparedStatement pstm = null;
@@ -94,7 +135,9 @@ public abstract class Control_Reportes {
                 if (pstm != null) {
                     pstm.close();
                 }
-                //if (cn!=null) cn.close();
+                if (cn != null) {
+                    cn.close();
+                }
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
